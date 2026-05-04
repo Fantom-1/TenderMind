@@ -1,0 +1,51 @@
+# =====================================================================
+# TenderMind AI — .gitignore
+# Note: backend/.env and frontend/.env.local ARE committed on purpose so
+# the hackathon evaluator can clone and run with zero config edits.
+# For machine-specific overrides use .env.override / .env.local.override.
+# =====================================================================
+
+# Conda env (lives in-project on D drive)
+envs/
+.npm-cache/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local env overrides (real secrets, machine-specific) — gitignored
+.env.override
+.env.*.override
+.env.local.override
+*.pem
+*.key
+
+# Storage (uploaded docs, OCR cache, signed PDFs, chroma index) —
+# regenerated at runtime; never commit user data.
+storage/
+backend/storage/
+
+# Node / Next.js
+node_modules/
+.next/
+out/
+.vercel/
+tsconfig.tsbuildinfo
+
+# IDE / OS
+.vscode/
+.idea/
+*.swp
+Thumbs.db
+.DS_Store
+
+# Logs
+*.log
+logs/
+
+# Claude Code working files
+.claude/

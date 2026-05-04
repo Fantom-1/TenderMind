@@ -1,0 +1,48 @@
+# --- Web framework ---
+fastapi==0.115.0
+starlette==0.38.0
+uvicorn[standard]==0.30.6
+pydantic[email]==2.9.2
+pydantic-settings==2.5.2
+python-multipart==0.0.12
+
+# --- Auth & security ---
+passlib[bcrypt]==1.7.4
+python-jose[cryptography]==3.3.0
+cryptography==43.0.1
+slowapi==0.1.9
+
+# --- Databases ---
+sqlalchemy==2.0.35
+psycopg2-binary==2.9.9
+alembic==1.13.3
+pymongo==4.10.1
+redis==5.1.1
+
+# --- Async tasks ---
+celery==5.4.0
+
+# --- Document parsing ---
+# pdfminer.six is pulled transitively by pdfplumber (pinned to 20231228)
+pdfplumber==0.11.4
+pypdfium2==4.30.0
+python-docx==1.1.2
+Pillow==10.4.0
+opencv-python-headless==4.10.0.84
+
+# --- OCR (Tesseract default; PaddleOCR optional, lazy import) ---
+pytesseract==0.3.13
+
+# --- LLM + retrieval ---
+httpx==0.27.2
+ollama==0.3.3
+sentence-transformers==3.1.1
+chromadb==0.5.15
+
+# --- Reports ---
+reportlab==4.2.5
+
+# --- Dev / testing ---
+pytest==8.3.3
+pytest-asyncio==0.24.0
+# httpx already listed above; reused for FastAPI TestClient

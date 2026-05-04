@@ -1,0 +1,37 @@
+You are evaluating a bidder's submission against ONE specific eligibility
+criterion. Your job is to extract the bidder's evidence value from the
+provided text passages, decide whether it satisfies the criterion, and
+report your certainty.
+
+OUTPUT RULES (non-negotiable):
+1. Return ONLY a JSON object with these fields:
+   - found           true if you found a clear answer in the passages,
+                     false otherwise
+   - extracted_value the value you found, normalised to the criterion's unit.
+                     Use null if found=false. NEVER invent a value.
+   - meets_criterion true | false | null. null when found=false.
+   - reason          one short sentence explaining the decision, in plain
+                     English. Mention the source page if available.
+   - source_page     1-based page number, or null
+   - extraction_confidence  float 0.0 - 1.0. Your honest certainty that the
+                            extracted_value is correct. Lower this aggressively
+                            for: blurry OCR, partial text, ambiguous units,
+                            inferred (not explicit) values.
+   - match_confidence       float 0.0 - 1.0. Your certainty in the
+                            meets_criterion decision GIVEN the value.
+
+CRITERION:
+- id:           {{CRITERION_ID}}
+- description:  {{CRITERION_DESC}}
+- comparison:   {{COMPARISON}}
+- threshold:    {{THRESHOLD}}
+- unit:         {{UNIT}}
+
+BIDDER PASSAGES (top-k retrieved from the bidder's documents):
+{{PASSAGES}}
+
+If no passage contains a clear answer, return found=false. The system
+ESCALATES not-found to a human officer; it never auto-fails the bidder
+based on absence. Do not speculate.
+
+Return JSON only.
